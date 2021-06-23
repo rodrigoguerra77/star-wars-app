@@ -1,32 +1,34 @@
 import React from 'react'
-import { Card, CardMedia, CardContent, Typography } from '@material-ui/core'
+import { Card, CardMedia, CardContent, Typography, CardActionArea } from '@material-ui/core'
+import {useHistory} from "react-router-dom"
 import { withStyles } from '@material-ui/core/styles'
-import { Link } from 'react-router-dom'
 
 const PeopleCard = ({classes, name, image, to = '#'}) => {
+  const history = useHistory()
+
   return (
     <Card className={classes.item}>
-      <CardMedia className={classes.media} image={image} />
-      <CardContent>
-        <Link to={to}>
+      <CardActionArea onClick={() => history.push(to)}>
+        <CardMedia className={classes.media} image={image} />
+        <CardContent>
           <Typography variant="h6" component="p">
             {name}
           </Typography>
-        </Link>
-      </CardContent>
+        </CardContent>
+      </CardActionArea>
     </Card>
   )
 }
 
 export default withStyles({
   item: {
-    width: '200px',
-    margin: '2em',
+    width: '270px',
+    margin: '1em',
     textAlign: 'center',
     boxSizing: 'border-box',
-    padding: '1em'
+    padding: '0.5em'
   },
   media: {
-      height: '150px',
+      height: '180px',
   }
 }) (PeopleCard)

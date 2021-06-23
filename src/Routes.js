@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import Home from './components/Home'
 import PeopleListContainer from './containers/PeopleListContainer'
 import PeopleContainer from './containers/PeopleContainer'
+import NotFound from './containers/NotFound'
 
 const Routes = () => {
     return (
@@ -10,6 +11,7 @@ const Routes = () => {
             <Route exact path='/' component={Home} />
             <Route path='/characters' component={PeopleListContainer} />
             <Route exact path='/character/:peopleId' component={PeopleContainer} />
+            <Route path='*' component={NotFound} />
         </Switch>
     )
 }

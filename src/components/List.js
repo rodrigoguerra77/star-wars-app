@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import PeopleCard from './PeopleCard'
 import { Grid } from '@material-ui/core'
 
@@ -16,11 +16,11 @@ const walk = (people, index) => {
 
 const List = ({ peopleData }) => {
   return (
-    <Fragment>
+    <>
       <Grid container justify='center'>
         { peopleData.map(walk) }
       </Grid>
-    </Fragment>
+    </>
   )
 }
 
