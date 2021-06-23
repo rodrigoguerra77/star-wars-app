@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import axios from "axios"
-import PeopleDescription from "../components/PeopleDescription"
-import AppNav from "../components/AppNav"
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
+import PeopleDescription from '../components/PeopleDescription'
+import AppNav from '../components/AppNav'
 
 const PeopleContainer = () => {
   const [peopleData, setPeopleData] = useState({
-    peopleId: "",
-    name: "",
-    birth_year: "",
-    gender: "",
-    homeWorld: "",
+    peopleId: '',
+    name: '',
+    birth_year: '',
+    gender: '',
+    homeWorld: '',
     films: [],
   })
   const { peopleId } = useParams()

@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react"
-import axios from "axios"
-import { Link, useHistory } from "react-router-dom"
-import Paper from "@material-ui/core/Paper"
-import Grid from "@material-ui/core/Grid"
-import Typography from "@material-ui/core/Typography"
-import CircularProgress from "@material-ui/core/CircularProgress"
-import { withStyles } from "@material-ui/core/styles"
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import { useHistory } from 'react-router-dom'
+import Paper from '@material-ui/core/Paper'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import { withStyles } from '@material-ui/core/styles'
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-import PeopleCard from "./PeopleCard"
+import PeopleCard from './PeopleCard'
 
 const getData = (url) => {
   return new Promise((resolve, reject) => {
@@ -23,7 +23,7 @@ const getData = (url) => {
 const PeopleDescription = ({ peopleData, homeWorld, classes }) => {
   const [movieList, setMovieList] = useState([])
   const [movieListLoading, setMovieListLoading] = useState(true)
-  const [peopleHomeworld, setPeopleHomeworld] = useState("")
+  const [peopleHomeworld, setPeopleHomeworld] = useState('')
   const [peopleHomeworldLoading, setPeopleHomeworldLoading] = useState(true)
   const peopleImage = `${process.env.PUBLIC_URL}/images/people/${peopleData.peopleId}.jpg`
   const history = useHistory()
@@ -48,7 +48,9 @@ const PeopleDescription = ({ peopleData, homeWorld, classes }) => {
           setMovieListLoading(false)
         })
     }
-    renderMovies()
+    if (peopleData.films.length) {
+      renderMovies()
+    }
   }, [peopleData.films])
 
   useEffect(() => {
@@ -66,71 +68,80 @@ const PeopleDescription = ({ peopleData, homeWorld, classes }) => {
           setPeopleHomeworldLoading(false)
         })
     }
-    fetchHomeworld()
+    if (peopleData.homeworld) {
+      fetchHomeworld()
+    }
   }, [peopleData.homeworld])
 
   return (
     <Grid
       container
       spacing={0}
-      direction="row"
-      alignItems="center"
-      justify="center"
+      direction='row'
+      alignItems='center'
+      justify='center'
     >
       <Grid item xs={12}>
         <IconButton onClick={() => history.push('/characters')}>
-          <ArrowBackIcon style={{color: "yellow"}} />
+          <ArrowBackIcon style={{color: 'yellow'}} />
         </IconButton>
       </Grid>
-      <Grid item md={3}>
-        <PeopleCard image={peopleImage} name={peopleData.name} />
+      <Grid item md={4}>
+        <div className={classes.descriptionContainer}>
+          <PeopleCard image={peopleImage} name={peopleData.name} />
+        </div>
       </Grid>
-      <Grid item md={9}>
+      <Grid item md={4}>
         <div className={classes.descriptionContainer}>
           <Paper className={classes.descriptionBox}>
-            <Typography variant="h6" component="p">
+            <Typography variant='h5' component='p'>
               Detalle
             </Typography>
             <br />
             <Typography
-              variant="body1"
-              component="p"
+              variant='body1'
+              component='p'
               className={classes.descriptionText}
             >
               Año de Nacimiento: {peopleData.birth_year}
             </Typography>
             <Typography
-              variant="body1"
-              component="p"
+              variant='body1'
+              component='p'
               className={classes.descriptionText}
             >
               Género: {peopleData.gender}
             </Typography>
-            <Typography
-              variant="body1"
-              component="p"
-              className={classes.descriptionText}
-            >
-              Planeta Origen:{" "}
-              {peopleHomeworldLoading ? <CircularProgress /> : peopleHomeworld}
-            </Typography>
+            {peopleHomeworldLoading ? (
+              <CircularProgress />
+            ) : (
+              <Typography
+                variant="body1"
+                component="p"
+                className={classes.descriptionText}
+              >
+                Planeta Origen:{peopleHomeworld}
+              </Typography>
+            )}
           </Paper>
         </div>
+      </Grid>
+      <Grid item md={4}>
         <div className={classes.descriptionContainer}>
           <Paper className={classes.descriptionBox}>
-            <Typography variant="h6" component="p">
+            <Typography variant='h5' component='p'>
               Peliculas
             </Typography>
             <br />
             {movieListLoading ? (
-              <CircularProgress />
+              <CircularProgress  style={{ color: 'yellow' }} />
             ) : (
               movieList.map((item, index) => {
                 return (
                   <Typography
                     key={index}
-                    variant="body1"
-                    component="p"
+                    variant='body1'
+                    component='p'
                     className={classes.descriptionText}
                   >
                     {item}
@@ -147,15 +158,15 @@ const PeopleDescription = ({ peopleData, homeWorld, classes }) => {
 
 export default withStyles({
   descriptionContainer: {
-    margin: "2em",
+    margin: '2em',
   },
   descriptionBox: {
-    padding: "2em",
-    height: "auto",
+    padding: '2em',
+    minHeight: '200px',
   },
   descriptionText: {
-    fontSize: "1em",
-    textAlign: "justify",
-    fontFamily: "Verdana",
+    fontSize: '1em',
+    textAlign: 'justify',
+    fontFamily: 'Verdana',
   },
 })(PeopleDescription)

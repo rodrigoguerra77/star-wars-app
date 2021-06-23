@@ -8,8 +8,8 @@ const AppNav = (props) => {
   
   return (
     <AppBar className={classes.NavColor} position='static'>
-      <Toolbar variant="dense">
-        <Typography variant="h6" component="p" color="inherit">
+      <Toolbar variant='dense'>
+        <Typography variant='h6' component='p' color='inherit'>
           <Link to='/' className='text-nav-app'>Star Wars</Link>
         </Typography>
       </Toolbar>

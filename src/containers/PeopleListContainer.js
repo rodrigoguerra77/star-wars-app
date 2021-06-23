@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import CircularProgress from "@material-ui/core/CircularProgress"
-import Typography from "@material-ui/core/Typography"
-import Box from "@material-ui/core/Box"
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Typography from '@material-ui/core/Typography'
+import Box from '@material-ui/core/Box'
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
@@ -99,28 +99,28 @@ const PeopleListContainer = () => {
       }
       {
         isLoading && <Box
-        minHeight="79.5vh"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
+        minHeight='77.5vh'
+        display='flex'
+        justifyContent='center'
+        alignItems='center'
       >
-        <CircularProgress style={{ color: "yellow" }} />
+        <CircularProgress style={{ color: 'yellow' }} />
       </Box>
       }
       {
         !isLoading && error &&
-        <Typography color="error">Algo ha salido mal.</Typography>
+        <Typography color='error'>Algo ha salido mal.</Typography>
       }
-      <Box display="flex" justifyContent="center" width="100%">
+      <Box display='flex' justifyContent='center' width='100%'>
         { pagination.previous &&
           <IconButton onClick={previousPage}>
-            <ArrowBackIosIcon style={{color: "yellow"}} />
+            <ArrowBackIosIcon style={{color: 'yellow'}} />
           </IconButton>
         }
         {
           pagination.next &&
           <IconButton onClick={nextPage}>
-            <ArrowForwardIosIcon style={{color: "yellow"}} />
+            <ArrowForwardIosIcon style={{color: 'yellow'}} />
           </IconButton>
         }
 
