@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import PeopleDescription from '../components/PeopleDescription'
 import AppNav from '../components/AppNav'
+import config from '../config'
 
 const PeopleContainer = () => {
   const [peopleData, setPeopleData] = useState({
@@ -18,7 +19,7 @@ const PeopleContainer = () => {
   useEffect(() => {
     function getData() {
       axios
-        .get(`${process.env.REACT_APP_SWAPI_BASE_URL}people/${peopleId}/`)
+        .get(`${config.API_URL}people/${peopleId}/`)
         .then((res) => {
           const { name, birth_year, gender, films, homeworld } = res.data
           setPeopleData({

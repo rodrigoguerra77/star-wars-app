@@ -9,6 +9,7 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 import List from '../components/List'
 import AppNav from '../components/AppNav'
+import config from '../config'
 
 const PeopleListContainer = () => {
   const [peopleData, setPeopleData] = useState([])
@@ -18,7 +19,7 @@ const PeopleListContainer = () => {
 
   useEffect(() => {
     const fetchData = () => {
-      axios.get(`${process.env.REACT_APP_SWAPI_BASE_URL}people`)
+      axios.get(`${config.API_URL}people`)
       .then(res => {
         const { next, previous } = res.data
         setPagination({
