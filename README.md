@@ -23,6 +23,9 @@ npm run start
 npm run test
 ```
 
+## Deployed application
+* Website: https://cranky-kepler-d7e4c2.netlify.app/
+
 ## Author
 
 👤 **Rodrigo Guerra**
