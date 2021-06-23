@@ -18,6 +18,10 @@ li>a {
   color: #ffe81f;
 }
 
+.MuiCardContent-root>a {
+  color: #000;
+}
+
 .title-white {
   color: #fff;
 }

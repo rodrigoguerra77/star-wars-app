@@ -1,15 +1,18 @@
 import React from 'react'
 import { Card, CardMedia, CardContent, Typography } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
+import { Link } from 'react-router-dom'
 
-const PeopleCard = ({name, image, classes}) => {
+const PeopleCard = ({classes, name, image, to = '#'}) => {
   return (
     <Card className={classes.item}>
       <CardMedia className={classes.media} image={image} />
       <CardContent>
-        <Typography variant="h6" component="p">
-          {name}
-        </Typography>
+        <Link to={to}>
+          <Typography variant="h6" component="p">
+            {name}
+          </Typography>
+        </Link>
       </CardContent>
     </Card>
   )
@@ -24,6 +27,6 @@ export default withStyles({
     padding: '1em'
   },
   media: {
-      height: '170px',
+      height: '150px',
   }
 }) (PeopleCard)
